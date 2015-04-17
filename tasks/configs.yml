@@ -1,0 +1,26 @@
+---
+# Apple config values specified at a group/global level
+- name: apply global csf configs
+  sudo: true
+  lineinfile: >
+    dest="/etc/csf/csf.conf"
+    regexp="^{{ item.name }} ="
+    line='{{ item.name }} = "{{ item.config }}"'
+  with_items: csf_global_conf
+  when: "csf_global_conf is defined"
+  notify:
+    - restart csf
+    - restart lfd
+
+# Apple per server/host configs
+- name: apply host csf configs
+  sudo: true
+  lineinfile: >
+    dest="/etc/csf/csf.conf"
+    regexp="^{{ item.name }} ="
+    line='{{ item.name }} = "{{ item.config }}"'
+  with_items: csf_conf
+  when: "csf_conf is defined"
+  notify:
+    - restart csf
+    - restart lfd

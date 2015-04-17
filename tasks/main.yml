@@ -1,0 +1,11 @@
+---
+# Tasks for CSF Configuration
+
+# Include CSF install
+- include: install.yml
+
+# Include our allow includes
+- include: includes.yml
+
+# Include our configs
+- include: configs.yml

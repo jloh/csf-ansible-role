@@ -1,0 +1,31 @@
+---
+# Create directory that we place rules in 
+- name: create includes directory
+  sudo: true
+  file: >
+   path=/etc/csf/includes 
+   state=directory 
+   owner=root group=root mode=0600
+  when: "csf_rules is defined"
+
+# Enable rules in csf.allow
+- name: enable common csf.allow rules
+  sudo: true
+  lineinfile: >
+    dest="/etc/csf/csf.allow"
+    regexp="^Include /etc/csf/includes/{{ item.rule }}.allow$"
+    line="Include /etc/csf/includes/{{ item.rule }}.allow"
+  with_items: csf_rules
+  when: "csf_rules is defined"
+  notify: restart csf
+
+# Copy rules across to the system
+- name: copy common csf rules
+  sudo: true
+  copy: >
+    src="rules/common/{{ item.rule }}.allow"
+    dest="/etc/csf/includes/{{ item.rule }}.allow"
+    owner=root group=root mode=0600
+  with_items: csf_rules
+  when: "csf_rules is defined"
+  notify: restart csf

@@ -1,0 +1,30 @@
+---
+language: python
+python: '2.7'
+
+env:
+  matrix:
+  - SITE=local_host.yml
+
+before_install:
+  - sudo apt-get update -qq
+
+install:
+  - pip install ansible
+  - ansible --version
+  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+
+script:
+  - ansible-playbook -i meta/tests/inventory meta/tests/$SITE --syntax-check
+  - ansible-playbook -i meta/tests/inventory meta/tests/$SITE --connection=local --sudo
+
+notifications:
+  email:
+    recipients:
+      secure: K6bXbF/pQM/emavsDAGlijWQahtlTkFp7pIKvAAsuOv4R4ex3dMDAFakoUBZMxDBtPmcwJhakKOh5uJunu498UV7dojgFPOgmYG6Hg8lXaldjeiKqJeROz3oHLIAisNv5trANlJHEP25AGrQTtZPD5WyY/mcnm371ZEJ7LwqHjI=
+    on_success: always
+    on_failure: always
+  hipchat:
+    rooms:
+      secure: UemuIs0KqmLitq34w/EdgdKJVfpM3Yv6oTZK1cjhRDChRQ81QNkYaJmDaUzsRsHwe54RU6SqG3Y6wgUDa5alKcs2x61FLLSXWdSG+C+R2a2HtzU7C4TXHCzdDqQurdmBX3iWmjmRvfEd9bli7AMCXOernPFxEfCwhkqSc9yaAu8=
+    notify: true

@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Mooash
+  description: Install and configure Config Server Firewall (CSF) from scratch
+  license: license (MIT)
+  min_ansible_version: 1.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  categories:
+  - packaging
+  - system
+dependencies: []
