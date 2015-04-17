@@ -30,7 +30,7 @@ notifications:
     notify: true
   webhooks:
     urls:
-      secure: "Xh/V6Yh3UUt5liqxo5TotJL5Vb/vyxgDFR/Y0M1mw6SGdnQ7OmOF4vxjF/M1faWzTHvQDVsmPOygm/0siEij5+qW97diKr4fhi2tomg+P7OstIXciqv6Byngm19nyiaH2kFW9w3p/Hgim3yB1WVVtOpIcqbjLCyePjY+Fpc7op8="
+      secure: "YIu2ohxhGJAsIa3Hgt7JE+pT6KxYCIH5Sz1GU1YJKLjB+qt9n+HIcBaizo2+AwJAtTZJZAka5QqAFTJrSLQyVROsOhwoVIRRXqiYw6QYI1urY+p0J4j7HKFhF6zqhT2PiUN9VVhiUkKCmnMmDlfHeiLA7pgiR7TL692ssjFKrGY="
     on_success: change 
     on_failure: always 
     on_start: false 
