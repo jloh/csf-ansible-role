@@ -15,28 +15,88 @@ None
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Variables are done in two stages:
+
+ * `csf_global_conf`  
+   Variables within this scope are done at a group level and are deployed to all servers
+ * `csf_conf`  
+   Variables within this scope should only be done on a per-server basis
+ * `csf_rules`  
+   Rules placed into this variable are copied from [`role_dir/files/rules/common/{{ item.rule }}.allow`](files/rules/common)  
+   **TODO:** Make this a lot neater
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: firewalls
+  roles:
+     - { role: mooash.csf-ansible-role }
+```
+
+In `group_vars/firewalls`:
+
+```yaml
+csf_global_conf:
+  - name: CLUSTER_PORT
+    config: "7786"
+  - name: CLUSTER_KEY
+    config: "some random cluster key"
+  - name: DENY_TEMP_IP_LIMIT
+    config: "200"
+  - name: LF_CONSOLE_EMAIL_ALERT
+    config: "1"
+  - name: LF_GLOBAL
+    config: "3600"
+  - name: GLOBAL_DYNDNS_INTERVAL
+    config: "600"
+  - name: URLGET
+    config: "2"
+```
+
+In `host_vars/firewall-01`:
+
+```yaml
+csf_conf:
+  - name: CLUSTER_RECVFROM
+    config: "162.243.144.14,103.4.18.200,80.69.77.247"
+  - name: CLUSTER_SENDTO
+    config: "162.243.144.14,103.4.18.200,80.69.77.247"
+  - name: TCP_IN
+    config: "80,443"
+  - name: TCP_OUT
+    config: "25,53,80,443"
+  - name: UDP_IN
+    config: ""
+  - name: UDP_OUT
+    config: "25,123"
+  - name: TCP6_IN
+    config: "80,443"
+  - name: TCP6_OUT
+    config: "25,53,80,443"
+  - name: UDP6_IN
+    config: ""
+  - name: UDP6_OUT
+    config: "25,123"
+
+ csf_rules:
+  - rule: nagios
+  - rule: munin
+```
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Checkout my blog [here](https://www.mooash.me/#pk_campaign=GitHub-Project&pk_kwd=csf-ansible-role)
