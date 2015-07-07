@@ -96,6 +96,11 @@ License
 
 MIT
 
+Contributors
+------------
+
+ * [bvansomeren](https://github.com/bvansomeren) for [PR 2](https://github.com/Mooash/csf-ansible-role/pull/2)
+
 Author Information
 ------------------
 
