@@ -3,8 +3,13 @@ language: python
 python: '2.7'
 
 env:
-  matrix:
+  global:
     - SITE=local_host.yml
+  matrix:
+    - VARS=""
+    - VARS="ipset=true statistical_graphs=false
+    - VARS="ipset=false statistical_graphs=true"
+    - VARS="ipset=true statistical_graphs=true"
 
 before_install:
   - sudo apt-get update -qq
@@ -16,7 +21,7 @@ install:
 
 script:
   - ansible-playbook -i meta/tests/inventory meta/tests/$SITE --syntax-check
-  - ansible-playbook -i meta/tests/inventory meta/tests/$SITE --connection=local --sudo
+  - ansible-playbook -i meta/tests/inventory meta/tests/$SITE --connection=local --sudo --extra-vars="$VARS"
 
 notifications:
   email:
