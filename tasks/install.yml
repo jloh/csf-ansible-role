@@ -6,6 +6,7 @@
   command: csf -v
   register: result
   ignore_errors: true
+  changed_when: false
 
 # Create a temp dir for our install
 - name: create temp dir
