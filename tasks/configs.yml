@@ -1,7 +1,6 @@
 ---
 # Apple config values specified at a group/global level
 - name: apply global csf configs
-  sudo: true
   lineinfile: >
     dest="/etc/csf/csf.conf"
     regexp="^{{ item.name }} ="
@@ -14,7 +13,6 @@
 
 # Apple per server/host configs
 - name: apply host csf configs
-  sudo: true
   lineinfile: >
     dest="/etc/csf/csf.conf"
     regexp="^{{ item.name }} ="

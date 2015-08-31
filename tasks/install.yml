@@ -2,7 +2,6 @@
 # Check to see if CSF is already installed
 # TODO: this depends that CSF is in the users path
 - name: check if csf is installed
-  sudo: true
   command: csf -v
   register: result
   ignore_errors: true
@@ -10,13 +9,11 @@
 
 # Create a temp dir for our install
 - name: create temp dir
-  sudo: true
   command: mkdir -p /tmp/csf
   when: result|failed
 
 # Download the CSF file
 - name: download csf files
-  sudo: true
   command: "wget https://download.configserver.com/csf.tgz"
   args:
     chdir: /tmp/csf
@@ -24,7 +21,6 @@
 
 # Extract tar.gz
 - name: extract csf files
-  sudo: true
   command: tar -zxf csf.tgz
   args:
     chdir: /tmp/csf
@@ -32,34 +28,28 @@
 
 # Install lib-perl which is sometimes required for retrieving HTTPS URL's
 - name: install package libwww-perl [Debian]
-  sudo: true
   apt: name=libwww-perl state=present
   when: "ansible_os_family == 'Debian'"
 
 - name: install package perl-libwww-perl [RedHat]
-  sudo: true
   yum: name=perl-libwww-perl state=present
   when: "ansible_os_family == 'RedHat'"
 
 # Install ipset if desired
 - name: install package ipset [Debian]
-  sudo: true
   apt: name=ipset state=present
   when: "ipset and ansible_os_family == 'Debian'"
 
 - name: install package ipset [RedHat]
-  sudo: true
   yum: name=ipset state=present
   when: "ipset and ansible_os_family == 'RedHat'"
 
 # Install perl GD Graph if desired
 - name: install package libgd-graph-perl [Debian]
-  sudo: true
   apt: name=libgd-graph-perl state=present
   when: "statistical_graphs and ansible_os_family == 'Debian'"
 
 - name: install package perl-GDGraph [RedHat]
-  sudo: true
   yum: name=perl-GDGraph state=present
   when: "statistical_graphs and ansible_os_family == 'RedHat'"
 
@@ -70,13 +60,11 @@
 
 # ifconfig (net-tools) needs to be installed for CSF to work properly in CentOS7
 - name: install package net-tools [RedHat]
-  sudo: true
   yum: name=net-tools state=present
   when: "ansible_os_family == 'RedHat' and ansible_distribution_major_version == '7'"
 
 # Install CSF
 - name: install csf
-  sudo: true
   command: sh install.sh
   args:
     chdir: /tmp/csf/csf
@@ -84,6 +72,5 @@
 
 # Cleanup TEMP dir we created
 - name: cleanup csf files
-  sudo: true
   command: rm -rf /tmp/csf
   when: result|failed
