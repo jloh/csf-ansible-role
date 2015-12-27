@@ -3,10 +3,6 @@ CSF Ansible Role
 
 [![GitHub version](https://badge.fury.io/gh/Mooash%2Fcsf-ansible-role.svg)](http://badge.fury.io/gh/Mooash%2Fcsf-ansible-role) [![Build Status](https://travis-ci.org/Mooash/csf-ansible-role.svg?branch=master)](https://travis-ci.org/Mooash/csf-ansible-role)
 
-[![Join the chat at https://gitter.im/Mooash/project-chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Mooash/project-chat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-A brief description of the role goes here.
-
 Requirements
 ------------
 
@@ -32,8 +28,6 @@ None
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
 ```yaml
 - hosts: firewalls
