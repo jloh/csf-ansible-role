@@ -7,23 +7,19 @@
   ignore_errors: true
   changed_when: false
 
-# Create a temp dir for our install
-- name: create temp dir
-  command: mkdir -p /tmp/csf
-  when: result|failed
-
 # Download the CSF file
 - name: download csf files
-  command: "wget https://download.configserver.com/csf.tgz"
-  args:
-    chdir: /tmp/csf
+  get_url:
+    dest: /usr/src/csf.tgz
+    url: https://download.configserver.com/csf.tgz
   when: result|failed
 
 # Extract tar.gz
 - name: extract csf files
-  command: tar -zxf csf.tgz
-  args:
-    chdir: /tmp/csf
+  unarchive:
+    src: /usr/src/csf.tgz
+    dest: /usr/src
+    copy: no
   when: result|failed
 
 # Install lib-perl which is sometimes required for retrieving HTTPS URL's
@@ -69,10 +65,12 @@
 - name: install csf
   command: sh install.sh
   args:
-    chdir: /tmp/csf/csf
+    chdir: /usr/src/csf
   when: result|failed
 
 # Cleanup TEMP dir we created
 - name: cleanup csf files
-  command: rm -rf /tmp/csf
-  when: result|failed
+  file: path={{ item }} state=absent
+  with_items:
+   - /usr/src/csf/
+   - /usr/src/csf.tgz
