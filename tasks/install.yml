@@ -72,5 +72,5 @@
 - name: cleanup csf files
   file: path={{ item }} state=absent
   with_items:
-   - /usr/src/csf/
+   - /usr/src/csf
    - /usr/src/csf.tgz
