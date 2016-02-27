@@ -1,10 +1,8 @@
 ---
 # Restart CSF
 - name: restart csf
-  sudo: true
   command: csf -r
 
 # Restart LFD
 - name: restart lfd
-  sudo: true
   service: name=lfd state=restarted
