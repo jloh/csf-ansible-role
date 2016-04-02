@@ -1,7 +1,7 @@
 CSF Ansible Role
 =========
 
-[![GitHub version](https://badge.fury.io/gh/Mooash%2Fcsf-ansible-role.svg)](http://badge.fury.io/gh/Mooash%2Fcsf-ansible-role) [![Build Status](https://travis-ci.org/Mooash/csf-ansible-role.svg?branch=master)](https://travis-ci.org/Mooash/csf-ansible-role)
+[![GitHub version](https://badge.fury.io/gh/jloh%2Fcsf-ansible-role.svg)](http://badge.fury.io/gh/jloh%2Fcsf-ansible-role) [![Build Status](https://travis-ci.org/jloh/csf-ansible-role.svg?branch=master)](https://travis-ci.org/jloh/csf-ansible-role)
 
 Requirements
 ------------
@@ -98,4 +98,4 @@ Contributors
 Author Information
 ------------------
 
-Checkout my blog [here](https://www.mooash.me/#pk_campaign=GitHub-Project&pk_kwd=csf-ansible-role)
+Checkout my blog [here](https://blog.jloh.co/#pk_campaign=GitHub-Project&pk_kwd=csf-ansible-role)
