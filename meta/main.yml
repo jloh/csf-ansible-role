@@ -7,14 +7,15 @@ galaxy_info:
   platforms:
   - name: Ubuntu
     versions:
-    - all
+      - all
   - name: Debian
     versions:
-    - all
-  - name: RedHat
+      - all
+  - name: EL
     versions:
+      - 6
       - 7
   categories:
-  - packaging
-  - system
+    - packaging
+    - system
 dependencies: []

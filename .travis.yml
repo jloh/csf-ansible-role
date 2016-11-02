@@ -34,8 +34,4 @@ notifications:
       secure: UemuIs0KqmLitq34w/EdgdKJVfpM3Yv6oTZK1cjhRDChRQ81QNkYaJmDaUzsRsHwe54RU6SqG3Y6wgUDa5alKcs2x61FLLSXWdSG+C+R2a2HtzU7C4TXHCzdDqQurdmBX3iWmjmRvfEd9bli7AMCXOernPFxEfCwhkqSc9yaAu8=
     notify: true
   webhooks:
-    urls:
-      secure: "PVqTJ1Dtj3sHUSqMc3LE0S5hjkoKzFyRQ6G2pWLa5ChsrxEr6k0Tsezuk3NNe3qENnsrpG9lsWfLtHNGMiLIyhNpfK+eKMsTnTiZzB3lb/7vpt7EJmJeHsZ+WkbzpzTwV7TZrdYFP4JPqmhqcxjnhahTNB0F9nGWOrhQfTxprwo="
-    on_success: change 
-    on_failure: always 
-    on_start: false 
+    urls: https://galaxy.ansible.com/api/v1/notifications/
