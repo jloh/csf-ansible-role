@@ -5,7 +5,7 @@
     dest="/etc/csf/csf.conf"
     regexp="^{{ item.name }} ="
     line='{{ item.name }} = "{{ item.config }}"'
-  with_items: csf_global_conf
+  with_items: "{{ csf_global_conf }}"
   when: "csf_global_conf is defined"
   notify:
     - restart csf
@@ -17,8 +17,19 @@
     dest="/etc/csf/csf.conf"
     regexp="^{{ item.name }} ="
     line='{{ item.name }} = "{{ item.config }}"'
-  with_items: csf_conf
+  with_items: "{{ csf_conf }}"
   when: "csf_conf is defined"
   notify:
     - restart csf
     - restart lfd
+
+# add allowed ip to csf.allow
+- name: csf - adding allowed ip
+  lineinfile: >
+    dest="/etc/csf/csf.allow"
+    regexp="^{{ item }}"
+    line="{{ item }}"
+  with_items: "{{ csf_allow_ip }}"
+  when: "csf_allow_ip is defined"
+  notify:
+    - restart csf

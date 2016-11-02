@@ -17,6 +17,8 @@ Variables are done in two stages:
    Variables within this scope are done at a group level and are deployed to all servers
  * `csf_conf`  
    Variables within this scope should only be done on a per-server basis
+ * `csf_allow_ip`
+   Values in that array will be added to /etc/csf/csf.allow file 
  * `csf_rules`  
    Rules placed into this variable are copied from [`role_dir/files/rules/common/{{ item.rule }}.allow`](files/rules/common)  
    **TODO:** Make this a lot neater
@@ -53,6 +55,13 @@ csf_global_conf:
     config: "600"
   - name: URLGET
     config: "2"
+
+csf_allow_ip:
+ - 12.12.12.12 #office IP
+ - 138.44.33.22 #monitoring
+ - 198.33.22.11
+ - 45.22.11.22
+
 ```
 
 In `host_vars/firewall-01`:
