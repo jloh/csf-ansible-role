@@ -8,11 +8,13 @@
   changed_when: false
 
 # Create a temp dir for our install
+# @TODO:  [WARNING]: Consider using file module with state=directory rather than running mkdir
 - name: create temp dir
   command: mkdir -p /tmp/csf
   when: result|failed
 
 # Download the CSF file
+# @TODO:  [WARNING]: Consider using get_url or uri module rather than running wget
 - name: download csf files
   command: "wget https://download.configserver.com/csf.tgz"
   args:
@@ -20,6 +22,7 @@
   when: result|failed
 
 # Extract tar.gz
+# @TODO:  [WARNING]: Consider using unarchive module rather than running tar
 - name: extract csf files
   command: tar -zxf csf.tgz
   args:
