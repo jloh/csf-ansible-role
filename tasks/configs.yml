@@ -5,7 +5,7 @@
     dest="/etc/csf/csf.conf"
     regexp="^{{ item.name }} ="
     line='{{ item.name }} = "{{ item.config }}"'
-  with_items: "{{ csf_global_conf }}"
+  with_items: "{{ csf_global_conf|default([]) }}"
   when: "csf_global_conf is defined"
   notify:
     - restart csf
@@ -17,7 +17,7 @@
     dest="/etc/csf/csf.conf"
     regexp="^{{ item.name }} ="
     line='{{ item.name }} = "{{ item.config }}"'
-  with_items: "{{ csf_conf }}"
+  with_items: "{{ csf_conf|default([]) }}"
   when: "csf_conf is defined"
   notify:
     - restart csf
@@ -29,7 +29,7 @@
     dest="/etc/csf/csf.allow"
     regexp="^{{ item }}"
     line="{{ item }}"
-  with_items: "{{ csf_allow_ip }}"
+  with_items: "{{ csf_allow_ip|default([]) }}"
   when: "csf_allow_ip is defined"
   notify:
     - restart csf
