@@ -1,7 +1,6 @@
 # Change Log
 
-## [v1.1.0](https://github.com/jloh/csf-ansible-role/tree/v1.1.0) (2016-11-02
-
+## [v1.1.0](https://github.com/jloh/csf-ansible-role/tree/v1.1.0) (2016-11-02)
 [Full Changelog](https://github.com/jloh/csf-ansible-role/compare/v1.0.0...v1.1.0)
 
 **Implemented enhancements:**
@@ -10,7 +9,7 @@
 
 **Fixed bugs:**
 
-- Fix DEPRECATION WARNING errors due to bare variables: csf\\_allow\\_ip [\#7](https://github.com/jloh/csf-ansible-role/pull/7) ([marek-knappe](https://github.com/marek-knappe))
+- Fix DEPRECATION WARNING errors due to bare variables [\#7](https://github.com/jloh/csf-ansible-role/pull/7) ([marek-knappe](https://github.com/marek-knappe))
 
 ## [v1.0.0](https://github.com/jloh/csf-ansible-role/tree/v1.0.0) (2016-02-27)
 **Implemented enhancements:**
