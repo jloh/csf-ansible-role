@@ -62,11 +62,6 @@ csf_allow_ip:
  - 198.33.22.11
  - 45.22.11.22
 
-```
-
-In `group_vars/firewalls`:
-
-```yaml
 csf_blocklists_enable:
   - SPAMEDROP
   - DSHIELD
