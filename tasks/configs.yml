@@ -23,6 +23,18 @@
     - restart csf
     - restart lfd
 
+# Uncomment some blocklists
+- name: enable blocklists 
+  replace: 
+    dest: /etc/csf/csf.blocklists
+    regexp: '^\#{{ item }}\|(\w+.*)?$'
+    replace: '{{ item }}|\1'
+  with_items: "{{ csf_blocklists_enable }}"
+  when: "csf_blocklists_enable is defined"
+  notify:
+    - restart csf
+    - restart lfd
+
 # add allowed ip to csf.allow
 - name: csf - adding allowed ip
   lineinfile: >

@@ -64,6 +64,26 @@ csf_allow_ip:
 
 ```
 
+In `group_vars/firewalls`:
+
+```yaml
+csf_blocklists_enable:
+  - SPAMEDROP
+  - DSHIELD
+  - TOR
+  - ALTTOR
+  - BOGON
+  - HONEYPOT
+  - CIARMY
+  - BFB
+  - OPENBL
+  - AUTOSHUN
+  - MAXMIND
+  - BDE
+  - STOPFORUMSPAM
+```
+
+
 In `host_vars/firewall-01`:
 
 ```yaml
