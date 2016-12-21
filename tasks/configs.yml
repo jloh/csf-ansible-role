@@ -45,3 +45,15 @@
   when: "csf_allow_ip is defined"
   notify:
     - restart csf
+    
+# add ignored ip to csf.ignore
+- name: csf - adding allowed ip
+  lineinfile: >
+    dest="/etc/csf/csf.ignore"
+    regexp="^{{ item }}"
+    line="{{ item }}"
+  with_items: "{{ csf_ignore_ip|default([]) }}"
+  when: "csf_ignore_ip is defined"
+  notify:
+    - restart csf
+    - restart lfd

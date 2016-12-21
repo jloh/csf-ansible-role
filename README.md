@@ -61,6 +61,12 @@ csf_allow_ip:
  - 138.44.33.22 #monitoring
  - 198.33.22.11
  - 45.22.11.22
+ 
+csf_ignore_ip:
+ - 12.12.12.12 #office IP
+ - 138.44.33.22 #monitoring
+ - 198.33.22.11
+ - 45.22.11.22
 
 csf_blocklists_enable:
   - SPAMEDROP
