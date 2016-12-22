@@ -29,8 +29,8 @@
     dest: /etc/csf/csf.blocklists
     regexp: '^\#{{ item }}\|(\w+.*)?$'
     replace: '{{ item }}|\1'
-  with_items: "{{ csf_blocklists_enable }}"
-  when: csf_blocklists_enable is defined
+  with_items: "{{ csf_blocklists|default([]) }}"
+  when: csf_blocklists is defined
   notify:
     - restart csf
     - restart lfd
@@ -41,8 +41,8 @@
     dest="/etc/csf/csf.allow"
     regexp="^{{ item }}"
     line="{{ item }}"
-  with_items: "{{ csf_allow_ip|default([]) }}"
-  when: csf_allow_ip is defined
+  with_items: "{{ csf_allow|default([]) }}"
+  when: csf_allow is defined
   notify:
     - restart csf
     
@@ -52,8 +52,8 @@
     dest="/etc/csf/csf.ignore"
     regexp="^{{ item }}"
     line="{{ item }}"
-  with_items: "{{ csf_ignore_ip|default([]) }}"
-  when: csf_ignore_ip is defined
+  with_items: "{{ csf_ignore|default([]) }}"
+  when: csf_ignore is defined
   notify:
     - restart csf
     - restart lfd

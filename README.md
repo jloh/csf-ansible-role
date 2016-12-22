@@ -56,19 +56,19 @@ csf_global_conf:
   - name: URLGET
     config: "2"
 
-csf_allow_ip:
+csf_allow:
  - 12.12.12.12 #office IP
  - 138.44.33.22 #monitoring
  - 198.33.22.11
  - 45.22.11.22
  
-csf_ignore_ip:
+csf_ignore:
  - 12.12.12.12 #office IP
  - 138.44.33.22 #monitoring
  - 198.33.22.11
  - 45.22.11.22
 
-csf_blocklists_enable:
+csf_blocklists:
   - SPAMEDROP
   - DSHIELD
   - TOR
@@ -123,7 +123,7 @@ MIT
 Contributors
 ------------
 
- * [bvansomeren](https://github.com/bvansomeren) for [PR 2](https://github.com/Mooash/csf-ansible-role/pull/2)
+ * [bvansomeren](https://github.com/bvansomeren) for [PR 2](https://github.com/jloh/csf-ansible-role/pull/2)
 
 Author Information
 ------------------
