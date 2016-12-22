@@ -30,7 +30,7 @@
     regexp: '^\#{{ item }}\|(\w+.*)?$'
     replace: '{{ item }}|\1'
   with_items: "{{ csf_blocklists_enable }}"
-  when: csf_blocklists_enable is defined
+  when: csf_blocklists is defined
   notify:
     - restart csf
     - restart lfd
@@ -42,7 +42,7 @@
     regexp="^{{ item }}"
     line="{{ item }}"
   with_items: "{{ csf_allow_ip|default([]) }}"
-  when: csf_allow_ip is defined
+  when: csf_allow is defined
   notify:
     - restart csf
     
@@ -53,7 +53,7 @@
     regexp="^{{ item }}"
     line="{{ item }}"
   with_items: "{{ csf_ignore_ip|default([]) }}"
-  when: csf_ignore_ip is defined
+  when: csf_ignore is defined
   notify:
     - restart csf
     - restart lfd
