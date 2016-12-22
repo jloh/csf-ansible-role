@@ -10,15 +10,13 @@
 # Create a temp dir for our install
 # @TODO:  [WARNING]: Consider using file module with state=directory rather than running mkdir
 - name: create temp dir
-  command: mkdir -p /tmp/csf
+  file: path=/tmp/csf state=directory mode=0700
   when: result|failed
 
 # Download the CSF file
 # @TODO:  [WARNING]: Consider using get_url or uri module rather than running wget
 - name: download csf files
-  command: "wget https://download.configserver.com/csf.tgz"
-  args:
-    chdir: /tmp/csf
+  command: "wget -O /tmp/csf/csf.tgz https://download.configserver.com/csf.tgz"
   when: result|failed
 
 # Extract tar.gz
