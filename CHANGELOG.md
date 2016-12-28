@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.3.0](https://github.com/jloh/csf-ansible-role/tree/v1.3.0) (2016-12-28)
+[Full Changelog](https://github.com/jloh/csf-ansible-role/compare/v1.2.0...v1.3.0)
+
+**Fixed bugs:**
+
+- Case insensitive comparison for firewalld [\#12](https://github.com/jloh/csf-ansible-role/pull/12) ([gjedeer](https://github.com/gjedeer))
+
 ## [v1.2.0](https://github.com/jloh/csf-ansible-role/tree/v1.2.0) (2016-12-22)
 [Full Changelog](https://github.com/jloh/csf-ansible-role/compare/v1.1.0...v1.2.0)
 
