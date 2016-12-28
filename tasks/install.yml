@@ -8,23 +8,16 @@
   changed_when: false
 
 # Create a temp dir for our install
-# @TODO:  [WARNING]: Consider using file module with state=directory rather than running mkdir
 - name: create temp dir
-  file: path=/tmp/csf state=directory mode=0700
+  file: >
+    path=/tmp/csf state=directory mode=0700
   when: result|failed
 
 # Download the CSF file
-# @TODO:  [WARNING]: Consider using get_url or uri module rather than running wget
 - name: download csf files
-  command: "wget -O /tmp/csf/csf.tgz https://download.configserver.com/csf.tgz"
-  when: result|failed
-
-# Extract tar.gz
-# @TODO:  [WARNING]: Consider using unarchive module rather than running tar
-- name: extract csf files
-  command: tar -zxf csf.tgz
-  args:
-    chdir: /tmp/csf
+  unarchive: >
+    src=https://download.configserver.com/csf.tgz dest=/tmp/csf
+    remote_src=yes
   when: result|failed
 
 # Install lib-perl which is sometimes required for retrieving HTTPS URL's
@@ -75,5 +68,6 @@
 
 # Cleanup TEMP dir we created
 - name: cleanup csf files
-  command: rm -rf /tmp/csf
+  file: >
+    path=/tmp/csf state=absent
   when: result|failed
