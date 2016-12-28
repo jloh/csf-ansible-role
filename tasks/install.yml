@@ -52,7 +52,7 @@
   service: name=firewalld state=stopped enabled=no
   register: disable_firewalld
   when: "ansible_os_family == 'RedHat' and ansible_distribution_major_version == '7'"
-  failed_when: "disable_firewalld|failed and 'could not find' not in disable_firewalld.msg"
+  failed_when: "disable_firewalld|failed and 'could not find' not in disable_firewalld.msg.lower()"
 
 # ifconfig (net-tools) needs to be installed for CSF to work properly in CentOS7
 - name: install package net-tools [RedHat]
