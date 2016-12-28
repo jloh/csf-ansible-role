@@ -34,7 +34,7 @@ Example Playbook
 ```yaml
 - hosts: firewalls
   roles:
-     - { role: mooash.csf-ansible-role }
+     - { role: jloh.csf-ansible-role }
 ```
 
 In `group_vars/firewalls`:
@@ -57,14 +57,14 @@ csf_global_conf:
     config: "2"
 
 csf_allow:
- - 12.12.12.12 #office IP
- - 138.44.33.22 #monitoring
+ - 12.12.12.12	# office IP
+ - 138.44.33.22	# monitoring
  - 198.33.22.11
  - 45.22.11.22
  
 csf_ignore:
- - 12.12.12.12 #office IP
- - 138.44.33.22 #monitoring
+ - 12.12.12.12	# office IP
+ - 138.44.33.22	# monitoring
  - 198.33.22.11
  - 45.22.11.22
 
@@ -123,9 +123,9 @@ MIT
 Contributors
 ------------
 
- * [bvansomeren](https://github.com/bvansomeren) for [PR 2](https://github.com/jloh/csf-ansible-role/pull/2)
+Many! Please checkout [the contributors graph!](https://github.com/jloh/csf-ansible-role/graphs/contributors)
 
 Author Information
 ------------------
 
-Checkout my blog [here](https://blog.jloh.co/#pk_campaign=GitHub-Project&pk_kwd=csf-ansible-role)
+For other roles and general tech information please feel free to checkout [my blog](https://jloh.co/l/blog/#pk_campaign=GitHub-Project&pk_kwd=csf-ansible-role).
