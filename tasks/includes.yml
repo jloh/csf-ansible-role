@@ -13,7 +13,7 @@
     dest="/etc/csf/csf.allow"
     regexp="^Include /etc/csf/includes/{{ item.rule }}.allow$"
     line="Include /etc/csf/includes/{{ item.rule }}.allow"
-  with_items: csf_rules
+  with_items: "{{ csf_rules }}"
   when: "csf_rules is defined"
   notify: restart csf
 
@@ -23,6 +23,6 @@
     src="rules/common/{{ item.rule }}.allow"
     dest="/etc/csf/includes/{{ item.rule }}.allow"
     owner=root group=root mode=0600
-  with_items: csf_rules
+  with_items: "{{ csf_rules }}"
   when: "csf_rules is defined"
   notify: restart csf
