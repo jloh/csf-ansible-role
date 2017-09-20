@@ -19,7 +19,7 @@
 
 # Copy rules across to the system
 - name: copy common csf rules
-  copy: >
+  template: >
     src="rules/common/{{ item.rule }}.allow"
     dest="/etc/csf/includes/{{ item.rule }}.allow"
     owner=root group=root mode=0600
